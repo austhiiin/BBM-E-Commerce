@@ -1,0 +1,98 @@
+CREATE TABLE Users(
+    first_name varchar(50),
+    last_name varchar(50),
+    username varchar(50) PRIMARY KEY,
+    email varchar(50),
+    delivery_address varchar(100),
+    birthdate date,
+    password varchar(50)
+);
+
+CREATE TABLE Product(
+    product_id int AUTO_INCREMENT PRIMARY KEY,
+    product_name varchar(50),
+    product_description varchar(50),
+    quantity int,
+    price float,
+    image_url text,
+    category varchar(30)
+);
+
+CREATE TABLE Transaction(
+    transaction_id int AUTO_INCREMENT PRIMARY KEY,
+    username varchar(60),
+    product_id int,
+    quantity int,
+    transaction_date date,
+    pr_size varchar(5),
+    FOREIGN KEY (username) REFERENCES Users(username),
+    FOREIGN KEY (product_id) REFERENCES Product(product_id)
+);
+
+
+
+CREATE TABLE Admins (
+    admin_id INT PRIMARY KEY AUTO_INCREMENT,
+    admin_name VARCHAR(60),
+    admin_username VARCHAR(60),
+    admin_ps VARCHAR(20)
+);
+
+
+CREATE TABLE CheckOut (
+    co_id int AUTO_INCREMENT PRIMARY KEY,
+    username varchar(60),
+    product_id int,
+    quantity int,
+    transaction_date date,
+    pr_size varchar(5),
+    co_status varchar(25),
+    FOREIGN KEY (username) REFERENCES Users(username),
+    FOREIGN KEY (product_id) REFERENCES Product(product_id)
+);
+
+CREATE TABLE Product_Review(
+    pr_id int AUTO_INCREMENT PRIMARY KEY,
+    co_id int,
+    product_id int,
+    username varchar(60),
+    rating int,
+    review_text text,
+    review_status varchar(20),
+    FOREIGN KEY (co_id) REFERENCES CheckOut (co_id),
+    FOREIGN KEY (username) REFERENCES Users (username),
+    FOREIGN KEY (product_id) REFERENCES product(product_id)
+);
+
+
+INSERT INTO product(product_name, product_description, price, image_url, quantity, category) VALUES ('BBM Leather Sandals','Summertime, Daily, Class','249.99', 'stckimg/men1.jpg', 0, 'cat1');
+INSERT INTO product(product_name, product_description, price, image_url, quantity, category) VALUES ('BBM To Go - White Rubber Shoes','To go in any season','449.99', 'stckimg/men2.jpg', 0, 'cat1');
+INSERT INTO product(product_name, product_description, price, image_url, quantity, category) VALUES ('BBM Go Stroll Slipper Sandals','Summertime, Daily, Class','249.99', 'stckimg/men3.jpg', 0, 'cat1');
+INSERT INTO product(product_name, product_description, price, image_url, quantity, category) VALUES ('BBM To Go - Gray Rubber Shoes','To go in any season','449.99', 'stckimg/men4.jpg', 0, 'cat1');
+INSERT INTO product(product_name, product_description, price, image_url, quantity, category) VALUES ('BBM Go Stroll Sneakers','To go in any season','399.99', 'stckimg/men5.jpg', 0, 'cat1');
+
+INSERT INTO product(product_name, product_description, price, image_url, quantity, category) VALUES ('BBM Feminism Slippers','Summertime, Daily, Class','199.99', 'stckimg/lady1.jpg', 0, 'cat2');
+INSERT INTO product(product_name, product_description, price, image_url, quantity, category) VALUES ('BBM Go Slay Boots','Wear,Slay, Conquer','599.99', 'stckimg/lady2.jpg', 0, 'cat2');
+INSERT INTO product(product_name, product_description, price, image_url, quantity, category) VALUES ('BBM Collection of Imelda - White Heels','Be on top, of everyone','399.99', 'stckimg/lady3.jpg', 0, 'cat2');
+INSERT INTO product(product_name, product_description, price, image_url, quantity, category) VALUES ('BBM Collection of Imelda - Black Heels','Be on top, of everyone','399.99', 'stckimg/lady4.jpg', 0, 'cat2');
+INSERT INTO product(product_name, product_description, price, image_url, quantity, category) VALUES ('BBM Run Women - Brown','Run with your collection, Hawaii Friendly','449.99', 'stckimg/lady5.jpg', 0, 'cat2');
+
+INSERT INTO product(product_name, product_description, price, image_url, quantity, category) VALUES ('BBM Kiddie Sandals - Black and White','Go Round and Round with BBM','249.99', 'stckimg/kids1.jpg', 0, 'cat3');
+INSERT INTO product(product_name, product_description, price, image_url, quantity, category) VALUES ('BBM Go Run - Colorful Gray Boots','Start Young, Go Run','349.99', 'stckimg/kids2.jpg', 0, 'cat3');
+INSERT INTO product(product_name, product_description, price, image_url, quantity, category) VALUES ('BBM Collection of Imelda - Kiddie Sandals','Like Mother, Like Daughter','399.99', 'stckimg/kids3.jpg', 0, 'cat3');
+INSERT INTO product(product_name, product_description, price, image_url, quantity, category) VALUES ('BBM Collection of Imelda - Pink High Cut','Like Mother, Like Daughter','449.99', 'stckimg/kids4.jpg', 0, 'cat3');
+INSERT INTO product(product_name, product_description, price, image_url, quantity, category) VALUES ('BBM Collection of Imelda - Kiddie Black Shoes','Slay While Young, Slay Until the End of Time','399.99', 'stckimg/kids5.jpg', 0, 'cat3');
+
+INSERT INTO product(product_name, product_description, price, image_url, quantity, category) VALUES ('BBM Raise them Right Sandals - Blue Shiny','Nurture them, Teach them, Unite Them','349.99', 'stckimg/todd1.jpg', 0, 'cat4');
+INSERT INTO product(product_name, product_description, price, image_url, quantity, category) VALUES ('BBM Raise them Right Sandals - Blue Semi-Leather','Nurture them, Teach them, Unite Them','349.99', 'stckimg/todd2.jpg', 0, 'cat4');
+INSERT INTO product(product_name, product_description, price, image_url, quantity, category) VALUES ('BBM Raise them Right Shoe - Pink','Nurture them, Teach them, Unite Them','399.99', 'stckimg/todd3.jpg', 0, 'cat4');
+INSERT INTO product(product_name, product_description, price, image_url, quantity, category) VALUES ('BBM Raise them Right Shoe - Green Frog','Nurture them, Teach them, Unite Them','399.99', 'stckimg/todd4.jpg', 0, 'cat4');
+INSERT INTO product(product_name, product_description, price, image_url, quantity, category) VALUES ('BBM Raise them Right Shoe - Brown Boots','Nurture them, Teach them, Unite Them','449.99', 'stckimg/todd5.jpg', 0, 'cat4');
+
+INSERT INTO product(product_name, product_description, price, image_url, quantity, category) VALUES ('BBM Gets Comfy Socks - Neutral','Always Rest and Watch the Rest','99.99', 'stckimg/accessory1.jpg', 0, 'cat5');
+INSERT INTO product(product_name, product_description, price, image_url, quantity, category) VALUES ('BBM Wear Me - Night Anklet','Be Shiny, Be Seen, Go Party','199.99', 'stckimg/accessory2.jpg', 0, 'cat5');
+INSERT INTO product(product_name, product_description, price, image_url, quantity, category) VALUES ('BBM Wear Me - Sea Anklet','Be Shiny, Be Seen, Go Party','229.99', 'stckimg/accessory3.jpg', 0, 'cat5');
+INSERT INTO product(product_name, product_description, price, image_url, quantity, category) VALUES ('BBM Be BOLD - Barefoot Sandals','Be Shiny, Be Seen, Go Party','199.99', 'stckimg/accessory4.jpg', 0, 'cat5');
+INSERT INTO product(product_name, product_description, price, image_url, quantity, category) VALUES ('BBM Gets Comfy Socks - Neutral','Always Rest and Watch the Rest','99.99', 'stckimg/accessory5.jpg', 0, 'cat5');
+
+INSERT INTO `admins`(`admin_name`, `admin_username`, `admin_ps`) VALUES ('Kelvin Habal','kelvinpogi','1234');

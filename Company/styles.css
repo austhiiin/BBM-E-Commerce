@@ -1,0 +1,79 @@
+.accordion-item {
+    border: none; /* Remove the border */
+    border-radius: 0; /* Optional: Remove border-radius if not desired */
+}
+
+.accordion-button {
+    background-color: transparent; /* Remove background color */
+    color: #000; /* Change text color */
+    padding: 1rem; /* Adjust padding as needed */
+    border-bottom: 1px solid #dee2e6; /* Optional: Add a bottom border between accordion items */
+}
+
+.accordion-button:focus {
+    box-shadow: none; /* Optional: Remove focus shadow */
+}
+
+.accordion-button:hover {
+    background-color: #f8f9fa; /* Optional: Add hover background color */
+}
+
+.accordion-body {
+    border-top: none; /* Remove top border of accordion body */
+}
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}
+.btn-grad-vio {
+    background-image: linear-gradient(to right, #f8a4d8 0%, #6c63ff 51%, #f8a4d8 100%);
+    margin: 10px;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+}
+.btn-grad-vio:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+}
+
+
+.color-cb {
+    background-color: #6c63ff;
+}
+
+
+.teko-reg {
+  font-family: "Teko", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.teko-reg-2 {
+    font-family: "Teko", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: medium;
+    font-style: normal;
+  }
+.teko-regular {
+    font-family: "Teko", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: regular;
+    font-style: normal;
+    font-size: 25px;
+  }
